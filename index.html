@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gradebook App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Gradebook</h1>
+
+    <section class="card">
+      <label for="scores-input">Class scores (comma separated):</label>
+      <input
+        id="scores-input"
+        type="text"
+        placeholder="e.g. 92, 88, 12, 77, 57, 100, 67, 38, 97, 89"
+      />
+
+      <label for="student-score">Your score:</label>
+      <input
+        id="student-score"
+        type="number"
+        placeholder="e.g. 37"
+      />
+
+      <button id="calc-btn">Calculate Result</button>
+
+      <div id="result" class="result"></div>
+    </section>
+  </main>
+
+  <script src="gradebook.js"></script>
+  <script>
+    const scoresInput = document.getElementById("scores-input");
+    const studentScoreInput = document.getElementById("student-score");
+    const resultDiv = document.getElementById("result");
+    const calcBtn = document.getElementById("calc-btn");
+
+    calcBtn.addEventListener("click", () => {
+      const scoresText = scoresInput.value.trim();
+
+      if (!scoresText) {
+        resultDiv.textContent = "Please enter the class scores.";
+        return;
+      }
+
+      const totalScores = scoresText
+        .split(",")
+        .map(s => Number(s.trim()))
+        .filter(n => !Number.isNaN(n));
+
+      const studentScore = Number(studentScoreInput.value);
+
+      if (Number.isNaN(studentScore)) {
+        resultDiv.textContent = "Please enter your score.";
+        return;
+      }
+
+      const message = studentMsg(totalScores, studentScore);
+      resultDiv.textContent = message;
+    });
+  </script>
+</body>
+</html>
