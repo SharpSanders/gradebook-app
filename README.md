@@ -1,161 +1,152 @@
-# Gradebook App
+Gradebook App
 
-A simple gradebook tool that takes a list of class scores and a single student's score, then calculates:
+A lightweight, responsive gradebook application built with HTML, CSS, and vanilla JavaScript.
 
-- the **class average**, and  
-- the student's **letter grade** and **pass/fail** status.
+The app accepts a list of class scores and an individual student’s score, then calculates:
 
-Built to practice JavaScript control flow, loops, functions, and basic DOM work.
+The class average
 
-## Demo
+The student’s letter grade
 
-The app shows a centered card with:
+The student’s pass/fail status
 
-- A text input for **class scores** (comma-separated list).
-- A number input for **your score**.
-- A **Calculate Result** button.
-- A result area that displays the class average and whether you passed or failed.
+Live Site:
+https://sharpsanders.github.io/gradebook-app/
 
-Example flow:
+<img src="./img/Screenshot-gradebook-app.png" alt="Gradebook App Screenshot">
+Overview
 
-1. Enter:  
-   - Class scores: `92, 88, 12, 77, 57, 100, 67, 38, 97, 89`  
-   - Your score: `37`
-2. Click **Calculate Result**.
-3. The app calculates the class average and your letter grade, then shows a message like:
+This project was built to reinforce JavaScript fundamentals including:
 
-> `Class average: 71.7. Your grade: F. You failed the course.`
+Control flow and conditionals
 
-## Tech Stack
+Array parsing and transformation
 
-- **HTML** – markup for the form and result area.
-- **CSS** – gradient background, card layout, and basic UI styling.
-- **JavaScript** – grade calculations and DOM interaction.
+Loop-based calculations
 
-## Features
+Function composition
 
-- Parses a comma-separated list of scores into numbers.
-- Calculates the **class average**.
-- Converts a numeric score into a **letter grade**, with:
-  - `A++` reserved for a perfect **100**.
-  - `A` for 90–99.
-  - `B` for 80–89.
-  - `C` for 70–79.
-  - `D` for 60–69.
-  - `F` for anything below 60.
-- Determines whether the student **passed** or **failed**.
-- Handles basic validation:
-  - Asks for class scores if the list is empty.
-  - Asks for your score if it’s missing or invalid.
+DOM interaction and state updates
 
-## How to Run the Project
+It focuses on clean logic separation and user-friendly input handling.
 
-1. **Clone the repository:**
+Core Features
 
-   ```bash
-   git clone https://github.com/SharpSanders/gradebook-app.git
-   cd gradebook-app
-Open the app:
+Parses comma-separated class scores into numeric values
 
-Option A: Double-click index.html to open it in a browser.
+Filters invalid inputs safely
 
-Option B (recommended while developing): Use the Live Server extension in VS Code and open index.html via Live Server.
+Calculates the class average
 
-You should see a centered Gradebook card over a blue gradient background.
+Converts numeric scores into letter grades:
 
-How to Use
-In “Class scores (comma separated)”, enter the class results as a comma-separated list:
+A++ for 100
 
-text
-Copy code
+A for 90–99
+
+B for 80–89
+
+C for 70–79
+
+D for 60–69
+
+F below 60
+
+Determines pass/fail status
+
+Displays a formatted result message
+
+Basic validation for missing or invalid inputs
+
+Example Usage
+
+Input
+
+Class scores:
 92, 88, 12, 77, 57, 100, 67, 38, 97, 89
-In “Your score”, enter your own score (for example, 37).
 
-Click Calculate Result.
+Your score:
+37
 
-Read the message in the result area:
+Output
 
-It shows the class average.
+Class average: 71.7  
+Your grade: F  
+You failed the course.
 
-It reports your letter grade.
+Technical Highlights
 
-It tells you whether you passed or failed the course.
-
-How It Works (JavaScript Overview)
-All the core logic lives in the JavaScript file (gradebook.js / script.js depending on your filename):
+Modular helper functions:
 
 getAverage(scores)
 
-Loops through scores, sums them, and returns the average.
-
 getGrade(score)
-
-Returns "A++" for a score of 100.
-
-Returns "A" for 90–99.
-
-Returns "B" for 80–89.
-
-Returns "C" for 70–79.
-
-Returns "D" for 60–69.
-
-Returns "F" for anything below 60.
 
 hasPassingGrade(score)
 
-Uses getGrade(score) and returns true if the grade is not "F".
+studentMsg(scores, score)
 
-studentMsg(totalScores, studentScore)
+Defensive input handling
 
-Computes the class average via getAverage(totalScores).
+Controlled numeric conversion
 
-Gets the student's letter grade via getGrade(studentScore).
+Clear separation between logic and DOM manipulation
 
-Returns a full message string:
+Stateless calculations with predictable outputs
 
-"Class average: X. Your grade: Y. You passed the course."
+Tech Stack
 
-or "Class average: X. Your grade: Y. You failed the course."
+HTML5 (semantic structure)
 
-In index.html, the script:
+CSS3 (gradient layout + card UI)
 
-Reads the class scores input, splits on commas, trims, and converts to numbers.
+JavaScript (ES6)
 
-Filters out anything that isn’t a valid number.
-
-Reads the student score and converts it to a number.
-
-Calls studentMsg(totalScores, studentScore) and puts the returned message into the result <div>.
+No frameworks or external libraries.
 
 Project Structure
-text
-Copy code
 gradebook-app/
-├── index.html   # Markup for the gradebook form and result area
-├── styles.css   # Gradient background, card styling, and basic layout
-└── gradebook.js or script.js   # Grade and message logic, plus DOM interaction
-What I Practiced
-Using loops and arrays to compute averages.
+├── index.html
+├── styles.css
+└── script.js
 
-Writing reusable helper functions for grade logic.
+Run Locally
 
-Implementing conditional logic for grading and pass/fail messages.
+Clone the repository:
 
-Working with the DOM to read inputs and display results.
+git clone https://github.com/SharpSanders/gradebook-app.git
+cd gradebook-app
 
-Basic data validation and user feedback.
+
+Open index.html in your browser.
+
+No build tools or dependencies required.
+
+What This Project Demonstrates
+
+Array parsing and transformation from user input
+
+Conditional grading logic
+
+Function-driven architecture
+
+Clean DOM updates based on computed results
+
+Foundational algorithmic thinking
 
 Future Improvements
-More detailed validation and error messages for bad input.
 
-Support for weighting assignments or categories (tests, quizzes, etc.).
+Weighted grade categories
 
-Visual indicators for pass/fail (colors, icons).
+Additional statistics (min, max, median)
 
-Ability to save and load multiple classes or students.
+Enhanced validation messaging
 
-Display class statistics like min, max, and median scores.
+Visual pass/fail indicators
+
+Persistent storage for multiple classes
 
 Author
-Created by Trevyn Sanders.
+
+Trevyn Sanders
+Better Endeavors LLC
